@@ -5,6 +5,7 @@ pygame.init()
 display_width = 800
 display_height = 600
 
+#displays gameDisplay and inputs the two variables we created for width and height
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 #Defines colors in RGB formatt.
 black = (0,0,0)
