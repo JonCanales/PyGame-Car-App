@@ -4,6 +4,7 @@
 
 
 import pygame
+import time 
 
 pygame.init()
 #Here we created our constants we dont intend to change
@@ -28,14 +29,31 @@ carImg = pygame.image.load('racecar.jpeg')
 def car(x,y):
     gameDisplay.blit(carImg,(x,y))
 
+def text_objects(text,font):
+    textSurface = font.render(text,True, black)
+    return textSurface, textSurface.get.rect()
 
+#Made own function to display text onto screen.
+#Defines Text and Rectangle that will encompass it.Centers the text.THen blits onto surface. Then updates it.
+def message_display(text):
+    largeText = pygame.font.Font('freesansbold.ttf',115)
+    TextSurf, TextRect = text_objects(text, largeText)
+    TextRect.center = ((display_width/2),(display_height/2))
+    gameDisplay.blit(TextSurf, TextRect)
+
+    pygame.display.update()
+
+    time.sleep(2)
+
+    game_loop()
+
+def crash():
+    message_display('You Crashed!!!!')
 
 def game_loop():
     x = (display_width * 0.45)
     y = (display_height * 0.8)
-
     x_change = 0
-
     gameExit = False
 
     while not gameExit:
@@ -61,7 +79,7 @@ def game_loop():
 
         #The logic for whether or not the car has crossed any boundaries left or right.
         if x > display_width - car_width or x < 0:
-            gameExit = True
+            crash()
             
         
         pygame.display.update()
