@@ -1,3 +1,4 @@
+#Here in this program we display a racecar jpeg and when we press the left and right arrow keys it will move left and right.
 import pygame
 
 pygame.init()
@@ -10,9 +11,13 @@ gameDisplay = pygame.display.set_mode((display_width,display_height))
 #Defines colors in RGB formatt.
 black = (0,0,0)
 white = (255,255,255)
+red = (255,0,0)
+
+car_width = 73
 
 clock = pygame.time.Clock()
 crashed = False
+
 #Loads racecar.png into the carImg variable
 carImg = pygame.image.load('racecar.jpeg')
 
