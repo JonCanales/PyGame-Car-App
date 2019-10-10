@@ -2,6 +2,7 @@
 #Also holding down the left and right keys will keep on moving instead of just pressing it once at a time like the display.py program.
 import pygame
 import time
+import random
 
 pygame.init()
 #Here we created our constants we dont intend to change
@@ -20,6 +21,10 @@ pygame.display.set_caption('A bit Racey')
 clock = pygame.time.Clock()
 
 carImg = pygame.image.load('racecar.png')
+
+def things(thingx,thingy,thingw,thingh,color):
+    pygame.draw.rect(gameDisplay,color,[thingx,thingy,thingw,thingh])
+
 
 def car(x,y):
     gameDisplay.blit(carImg,(x,y))
@@ -51,7 +56,13 @@ def game_loop():
     y = (display_height * 0.8)
 
     x_change = 0
-
+######
+    thing_startx = random.randrange(0, display_width)
+    thing_starty = -400
+    thing_speed = 7
+    thing_width = 100
+    thing_height = 100
+######
     gameExit = False
 
     while not gameExit:
@@ -74,12 +85,19 @@ def game_loop():
         x += x_change
 
         gameDisplay.fill(white)
+        
+        
+        things(thing_startx,thing_starty,thing_width,thing_height,black)
+        thing_starty += thing_speed
         car(x,y)
         #The logic for whether or not the car has crossed any boundaries left or right.
         if x > display_width - car_width or x < 0:
             crash()
             
-        
+        if thing_starty > display_height:
+            thing_starty = 0 - thing_height
+            thing_startx = random.randrange(0,display_width)
+
         pygame.display.update()
         clock.tick(60)
 #Runs Gameloop and once its done it will run the pygame.quit and crash and quit the game.
