@@ -37,7 +37,7 @@ def message_display(text):
 
     pygame.display.update()
 
-    time.sleep(2)
+    time.sleep(1)
 
     game_loop()
     
