@@ -22,7 +22,9 @@ clock = pygame.time.Clock()
 
 carImg = pygame.image.load('racecar.png')
 
+#Takes x and Y starting points,wifth and height variables and a color
 def things(thingx,thingy,thingw,thingh,color):
+    #Then draws the polygon. The parameters are where,what color,and x and y locations
     pygame.draw.rect(gameDisplay,color,[thingx,thingy,thingw,thingh])
 
 
@@ -57,9 +59,14 @@ def game_loop():
 
     x_change = 0
 ######
+    #Starting position is random if its in x range between 0 and width of display
     thing_startx = random.randrange(0, display_width)
-    thing_starty = -400
+    #starting position for starty. GIves player time to get situated before it comes into view
+    thing_starty = -600
+    #Object Speed(How many pixels at a time it will move). 7 pixels it will move.
     thing_speed = 7
+    
+    #Blocks width and height
     thing_width = 100
     thing_height = 100
 ######
@@ -93,9 +100,13 @@ def game_loop():
         #The logic for whether or not the car has crossed any boundaries left or right.
         if x > display_width - car_width or x < 0:
             crash()
-            
+        #WHen thingy's location is greater then the display hight it will create another block
         if thing_starty > display_height:
+            
+            #Reassign a yvalue to the block where we use 0 -thing_height.
             thing_starty = 0 - thing_height
+            
+            #Refine the x-position of the block with a range between 0 and entire width of display
             thing_startx = random.randrange(0,display_width)
 
         pygame.display.update()
