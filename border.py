@@ -109,6 +109,13 @@ def game_loop():
             #Refine the x-position of the block with a range between 0 and entire width of display
             thing_startx = random.randrange(0,display_width)
 
+        if y < thing_starty + display_height:
+            print('y crossover')
+        
+        if x > thing_startx and x < thing_startx + thing_width or x + car_width > thing_startx and x + car_width < thing_startx+thing_width:
+            print('x crossover')
+            crash()
+            
         pygame.display.update()
         clock.tick(60)
 #Runs Gameloop and once its done it will run the pygame.quit and crash and quit the game.
