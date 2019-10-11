@@ -4,6 +4,7 @@ import pygame
 import time
 import random
 
+pygame.font.init()
 pygame.init()
 #Here we created our constants we dont intend to change
 display_width = 800
@@ -115,7 +116,7 @@ def game_loop():
         if x > thing_startx and x < thing_startx + thing_width or x + car_width > thing_startx and x + car_width < thing_startx+thing_width:
             print('x crossover')
             crash()
-            
+
         pygame.display.update()
         clock.tick(60)
 #Runs Gameloop and once its done it will run the pygame.quit and crash and quit the game.
