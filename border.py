@@ -121,7 +121,6 @@ def game_loop():
         clock.tick(60)
 #Runs Gameloop and once its done it will run the pygame.quit and crash and quit the game.
 game_loop()
-pygame.quit()
-quit()
+
 
 

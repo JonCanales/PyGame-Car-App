@@ -19,7 +19,7 @@ clock = pygame.time.Clock()
 crashed = False
 
 #Loads racecar.png into the carImg variable
-carImg = pygame.image.load('racecar.jpeg')
+carImg = pygame.image.load('racecar.png')
 
 #defines car funciton. Puts car to the display
 #Blit draws the image to the screen
@@ -38,6 +38,8 @@ while not crashed:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True
+            pygame.quit()
+            quit()
          ###################   #################################
         #Asks if event is a KeyDown type Event. Which means if there is any key being pressed?
         #IF so is that key a LEFT arrow Key? If it is then our x_change is -5
@@ -62,5 +64,3 @@ while not crashed:
         pygame.display.update()
         clock.tick(60)
 
-pygame.quit()
-quit()
